@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+{% if messages %}
+<ul class="messages alert alert-danger list-unstyled" role="alert"">
+    {% for message in messages %}
+        <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<form action="" method="POST" autocomplete="off" class="d-inline">
+  {% csrf_token %}
+  {{form.text|as_crispy_field}}
+  <div class="row">
+    <div class="col-md-4">
+      <button type="submit" class="btn btn-success btn-block btn-lg"><i class="fa-solid fa-arrow-up-from-bracket"></i> Submit</button>
+    </div>
+    <div class="col-md-8">
+        <a href="{% url 'text_list' %}" class="btn btn-outline-success float-right">View List</a>
+    </div>
+  </div>
+</form>
+  
+{% endblock content %}

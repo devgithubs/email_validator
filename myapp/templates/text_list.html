@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if messages %}
+<ul class="messages alert alert-success list-unstyled" role="alert"">
+    {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<table class="table table-borderless">
+    <thead class="border-bottom font-weight-bold">
+        <tr>
+            <td>ID</td>
+            <td>Emails in the Database:</td>
+            <td></td>
+            <td>
+                <a href="{% url 'text_form' %}" class="btn btn-outline-success">Enter new email</a>
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for email in emails %}
+        
+            <tr>
+                <td>{{ email.id }}</td>
+                <td>{{ email }}<td>
+                <td></td>
+                <td></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock content %}
